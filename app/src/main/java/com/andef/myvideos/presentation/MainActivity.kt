@@ -1,4 +1,4 @@
-package com.andef.myvideos
+package com.andef.myvideos.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
