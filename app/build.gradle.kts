@@ -39,6 +39,13 @@ android {
 }
 
 dependencies {
+    implementation(libs.retrofit)
+    implementation(libs.gson)
+    implementation(libs.converter.gson)
+
+    implementation(libs.google.dagger.compiler)
+    implementation(libs.dagger)
+
     implementation(libs.androidx.swiperefreshlayout)
 
     implementation(libs.androidx.core.ktx)
