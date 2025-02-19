@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId = "com.andef.myvideos"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -33,9 +33,13 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
+    implementation(libs.androidx.swiperefreshlayout)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
