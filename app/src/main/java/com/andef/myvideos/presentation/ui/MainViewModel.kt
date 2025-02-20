@@ -84,10 +84,6 @@ class MainViewModel @Inject constructor(
         loadVideos(true, query)
     }
 
-    init {
-        loadVideosByLastQuery()
-    }
-
     companion object {
         private const val TAG = "MainViewModel"
     }

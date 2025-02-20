@@ -40,6 +40,10 @@ class MainActivity : AppCompatActivity() {
         initViewModel()
         initStartQueryButton()
         initSwipeRefreshLayoutVideos()
+
+        if (savedInstanceState == null) {
+            viewModel.loadVideosByLastQuery()
+        }
     }
 
     private fun initSwipeRefreshLayoutVideos() {
