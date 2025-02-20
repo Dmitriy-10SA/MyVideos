@@ -1,4 +1,4 @@
-package com.andef.myvideos.data.mapper
+package com.andef.myvideos.data.mapper.dto
 
 import com.andef.myvideos.data.network.dto.videolist.VideoItemListHolderDTO
 import com.andef.myvideos.domain.entities.VideoIdList

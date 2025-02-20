@@ -5,6 +5,6 @@ import com.andef.myvideos.di.component.DaggerMyVideosComponent
 
 class MyVideosApplication : Application() {
     val component by lazy {
-        DaggerMyVideosComponent.create()
+        DaggerMyVideosComponent.factory().create(this)
     }
 }
