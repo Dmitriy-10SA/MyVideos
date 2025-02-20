@@ -1,4 +1,4 @@
-package com.andef.myvideos.data.mapper
+package com.andef.myvideos.data.mapper.dto
 
 import com.andef.myvideos.data.network.dto.video.VideoDTO
 import com.andef.myvideos.domain.entities.Video

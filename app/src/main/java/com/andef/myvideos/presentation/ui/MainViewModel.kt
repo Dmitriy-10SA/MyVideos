@@ -6,8 +6,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.andef.myvideos.domain.entities.Video
-import com.andef.myvideos.domain.usecase.GetVideoIdListUseCase
-import com.andef.myvideos.domain.usecase.GetVideoUseCase
+import com.andef.myvideos.domain.usecase.database.AddVideoDatabaseUseCase
+import com.andef.myvideos.domain.usecase.database.ClearVideosDatabaseUseCase
+import com.andef.myvideos.domain.usecase.database.GetInitialVideosDatabaseUseCase
+import com.andef.myvideos.domain.usecase.database.GetVideoCountDatabaseUseCase
+import com.andef.myvideos.domain.usecase.database.GetVideosByIdsDatabaseUseCase
+import com.andef.myvideos.domain.usecase.network.GetVideoIdListNetworkUseCase
+import com.andef.myvideos.domain.usecase.network.GetVideoNetworkUseCase
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -17,8 +22,13 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
-    private val getVideoUseCase: GetVideoUseCase,
-    private val getVideoIdListUseCase: GetVideoIdListUseCase
+    private val getVideoUseCase: GetVideoNetworkUseCase,
+    private val getVideoIdListUseCase: GetVideoIdListNetworkUseCase,
+    private val addVideoDatabaseUseCase: AddVideoDatabaseUseCase,
+    private val clearVideosDatabaseUseCase: ClearVideosDatabaseUseCase,
+    private val getInitialVideosDatabaseUseCase: GetInitialVideosDatabaseUseCase,
+    private val getVideoCountDatabaseUseCase: GetVideoCountDatabaseUseCase,
+    private val getVideosByIdsDatabaseUseCase: GetVideosByIdsDatabaseUseCase
 ) : ViewModel() {
     private val exceptionHandlerVideosId = CoroutineExceptionHandler { _, e ->
         Log.d(TAG, e.toString())
