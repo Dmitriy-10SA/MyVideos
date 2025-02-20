@@ -2,6 +2,7 @@ package com.andef.myvideos.data.network.api
 
 import com.andef.myvideos.data.network.dto.video.VideoDTO
 import com.andef.myvideos.data.network.dto.videolist.VideoItemListHolderDTO
+import com.andef.myvideos.di.annotation.ApplicationScope
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -10,7 +11,7 @@ interface ApiService {
     suspend fun getVideoItemList(
         @Query(QUERY_PARAM_PAGE_TOKEN) pageToken: String = "",
         @Query(QUERY_PARAM_TYPE) type: String = "video",
-        @Query(QUERY_PARAM_QUERY) query: String = "android",
+        @Query(QUERY_PARAM_QUERY) query: String = "",
         @Query(QUERY_PARAM_MAX_RESULT) maxResult: Int = 10,
         @Query(QUERY_PARAM_EVENT_TYPE) eventType: String = "completed",
         @Query(QUERY_PARAM_PART) part: String = "snippet",

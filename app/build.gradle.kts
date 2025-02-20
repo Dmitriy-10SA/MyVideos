@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -43,8 +44,13 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.converter.gson)
 
-    implementation(libs.google.dagger.compiler)
     implementation(libs.dagger)
+    kapt(libs.google.dagger.compiler)
+
+    implementation(libs.com.github.bumptech.glide.glide)
+    kapt(libs.compiler)
+
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
     implementation(libs.androidx.swiperefreshlayout)
 

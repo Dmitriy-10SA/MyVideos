@@ -6,8 +6,9 @@ import com.andef.myvideos.data.network.api.ApiService
 import com.andef.myvideos.domain.entities.Video
 import com.andef.myvideos.domain.entities.VideoIdList
 import com.andef.myvideos.domain.repository.VideoRepository
+import javax.inject.Inject
 
-class VideoRepositoryImpl(
+class VideoRepositoryImpl @Inject constructor(
     private val apiService: ApiService
 ) : VideoRepository {
     override suspend fun getVideo(id: String): Video {
