@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.andef.myvideos.R
 import com.andef.myvideos.databinding.VideoItemBinding
 import com.andef.myvideos.domain.entities.Video
 import com.andef.myvideos.presentation.parser.DurationParser
