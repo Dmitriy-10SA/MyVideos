@@ -10,7 +10,10 @@ object VideoDTOToVideoMapper {
             videoDTOItem.id,
             videoDTOItem.info.title,
             videoDTOItem.info.thumbnail.medium.url,
-            videoDTOItem.contentDetails.duration
+            videoDTOItem.contentDetails.duration,
+            "$URL_FOR_VIDEO${videoDTOItem.id}"
         )
     }
+
+    private const val URL_FOR_VIDEO = "https://www.youtube.com/watch?v="
 }

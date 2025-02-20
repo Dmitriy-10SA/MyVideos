@@ -10,6 +10,8 @@ import com.andef.myvideos.domain.usecase.GetVideoIdListUseCase
 import com.andef.myvideos.domain.usecase.GetVideoUseCase
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -53,13 +55,11 @@ class MainViewModel @Inject constructor(
                 val videosIdList = getVideoIdListUseCase.execute(nextPageToken, query)
                 nextPageToken = videosIdList.nextPageToken
                 val videosId = videosIdList.videoIds
-                mutableListOf<Video>().apply {
-                    videosId.forEach {
-                        launch(exceptionHandlerVideo) {
-                            add(getVideoUseCase.execute(it))
-                        }
+                videosId.map { id ->
+                    async(exceptionHandlerVideo) {
+                        getVideoUseCase.execute(id)
                     }
-                }
+                }.awaitAll()
             }
             if (isByQuery) {
                 _replaceVideos.value = videos.toList()
