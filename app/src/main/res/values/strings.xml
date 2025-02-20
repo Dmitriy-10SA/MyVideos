@@ -3,4 +3,5 @@
     <string name="thumbnail_video">Миниатюра видео</string>
     <string name="search">Поиск</string>
     <string name="search_video">Найти видео</string>
+    <string name="error_check_ethernet">Ошибка! Проверьте подлючение к интернету!</string>
 </resources>

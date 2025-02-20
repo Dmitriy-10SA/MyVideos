@@ -24,6 +24,8 @@
             android:contentDescription="@string/thumbnail_video"
             android:maxWidth="160dp"
             android:maxHeight="90dp"
+            android:minHeight="90dp"
+            android:minWidth="160dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

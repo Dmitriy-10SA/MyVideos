@@ -12,7 +12,7 @@ interface ApiService {
         @Query(QUERY_PARAM_PAGE_TOKEN) pageToken: String = "",
         @Query(QUERY_PARAM_TYPE) type: String = "video",
         @Query(QUERY_PARAM_QUERY) query: String = "",
-        @Query(QUERY_PARAM_MAX_RESULT) maxResult: Int = 10,
+        @Query(QUERY_PARAM_MAX_RESULT) maxResult: Int = 20,
         @Query(QUERY_PARAM_EVENT_TYPE) eventType: String = "completed",
         @Query(QUERY_PARAM_PART) part: String = "snippet",
         @Query(QUERY_PARAM_VIDEO_DURATION) duration: String = "medium",
@@ -40,6 +40,6 @@ interface ApiService {
         private const val QUERY_PARAM_LIVE_RELEVANCE_LANGUAGE = "relevanceLanguage"
         private const val QUERY_PARAM_VIDEO_ID = "id"
         private const val QUERY_PARAM_PAGE_TOKEN = "pageToken"
-        private const val API_KEY = "AIzaSyDBUgq1bC25jKEN9cJw7VrC9KEV7MLqAUs"
+        private const val API_KEY = "AIzaSyCCCtKqQSjlcn42QJwz_3etGWraI8BecsI"
     }
 }

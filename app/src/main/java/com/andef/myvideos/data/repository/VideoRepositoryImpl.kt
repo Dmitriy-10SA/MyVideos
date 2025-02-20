@@ -15,10 +15,11 @@ class VideoRepositoryImpl @Inject constructor(
         return VideoDTOToVideoMapper.map(apiService.getVideo(id))
     }
 
-    override suspend fun getVideoIdList(nextPageToken: String): VideoIdList {
+    override suspend fun getVideoIdList(nextPageToken: String, query: String): VideoIdList {
         return VideoItemListHolderDTOToVideoIdListMapper.map(
             apiService.getVideoItemList(
-                nextPageToken
+                nextPageToken,
+                query = query
             )
         )
     }
