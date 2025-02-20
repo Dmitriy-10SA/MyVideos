@@ -40,6 +40,10 @@ class MainActivity : AppCompatActivity() {
         initViewModel()
         initStartQueryButton()
         initSwipeRefreshLayoutVideos()
+
+        if (savedInstanceState == null) {
+            viewModel.loadVideosByLastQuery()
+        }
     }
 
     private fun initSwipeRefreshLayoutVideos() {
@@ -93,7 +97,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 setOnVideoClickListener { video ->
-                    watchVideo(video)
+                    showVideo(video)
                 }
             }
             recyclerViewVideos.adapter = videoAdapter
@@ -101,7 +105,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun watchVideo(video: Video) {
+    private fun showVideo(video: Video) {
         val intent = Intent(Intent.ACTION_VIEW).apply {
             data = Uri.parse(video.videoUrl)
         }

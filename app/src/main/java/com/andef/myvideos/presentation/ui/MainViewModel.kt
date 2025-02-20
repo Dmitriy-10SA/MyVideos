@@ -25,9 +25,6 @@ class MainViewModel @Inject constructor(
         _isLoading.value = false
         _error.value = Unit
     }
-    private val exceptionHandlerVideo = CoroutineExceptionHandler { _, e ->
-        Log.d(TAG, e.toString())
-    }
 
     private val _error = MutableLiveData<Unit>()
     val error: LiveData<Unit>
@@ -56,10 +53,14 @@ class MainViewModel @Inject constructor(
                 nextPageToken = videosIdList.nextPageToken
                 val videosId = videosIdList.videoIds
                 videosId.map { id ->
-                    async(exceptionHandlerVideo) {
-                        getVideoUseCase.execute(id)
+                    async {
+                        runCatching {
+                            getVideoUseCase.execute(id)
+                        }.onFailure { e ->
+                            Log.d(TAG, e.toString())
+                        }.getOrNull()
                     }
-                }.awaitAll()
+                }.awaitAll().filterNotNull()
             }
             if (isNeedReplace) {
                 _replaceVideos.value = videos.toList()
@@ -81,10 +82,6 @@ class MainViewModel @Inject constructor(
 
     fun loadVideosByQuery(query: String) {
         loadVideos(true, query)
-    }
-
-    init {
-        loadVideosByLastQuery()
     }
 
     companion object {
