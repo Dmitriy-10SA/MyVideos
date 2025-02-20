@@ -1,11 +1,14 @@
 package com.andef.myvideos.presentation.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.andef.myvideos.R
 import com.andef.myvideos.databinding.ActivityMainBinding
+import com.andef.myvideos.domain.entities.Video
 import com.andef.myvideos.presentation.adapter.VideoAdapter
 import com.andef.myvideos.presentation.application.MyVideosApplication
 import com.andef.myvideos.presentation.factory.ViewModelFactory
@@ -89,9 +92,19 @@ class MainActivity : AppCompatActivity() {
                         viewModel.loadVideosByLastQuery()
                     }
                 }
+                setOnVideoClickListener { video ->
+                    watchVideo(video)
+                }
             }
             recyclerViewVideos.adapter = videoAdapter
             recyclerViewVideos.itemAnimator = null
         }
+    }
+
+    private fun watchVideo(video: Video) {
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            data = Uri.parse(video.videoUrl)
+        }
+        startActivity(intent)
     }
 }

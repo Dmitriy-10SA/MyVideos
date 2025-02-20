@@ -3,7 +3,7 @@ package com.andef.myvideos.presentation.application
 import android.app.Application
 import com.andef.myvideos.di.component.DaggerMyVideosComponent
 
-class MyVideosApplication: Application() {
+class MyVideosApplication : Application() {
     val component by lazy {
         DaggerMyVideosComponent.create()
     }

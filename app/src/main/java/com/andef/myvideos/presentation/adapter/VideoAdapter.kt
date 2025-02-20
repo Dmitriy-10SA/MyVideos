@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 
 class VideoAdapter : ListAdapter<Video, VideoAdapter.VideoViewHolder>(VideoCallback()) {
     private var onReachEndListener: OnReachEndListener? = null
+    private var onVideoClickListener: OnVideoClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
         val binding = VideoItemBinding.inflate(
@@ -23,6 +24,9 @@ class VideoAdapter : ListAdapter<Video, VideoAdapter.VideoViewHolder>(VideoCallb
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
         val video = getItem(position)
+        holder.cardViewVideo.setOnClickListener {
+            onVideoClickListener?.onClick(video)
+        }
         Glide.with(holder.itemView)
             .load(video.thumbnailUrl)
             .into(holder.imageViewVideoThumbnail)
@@ -37,8 +41,16 @@ class VideoAdapter : ListAdapter<Video, VideoAdapter.VideoViewHolder>(VideoCallb
         this.onReachEndListener = onReachEndListener
     }
 
+    fun setOnVideoClickListener(onVideoClickListener: OnVideoClickListener) {
+        this.onVideoClickListener = onVideoClickListener
+    }
+
     fun interface OnReachEndListener {
         fun onReachEnd()
+    }
+
+    fun interface OnVideoClickListener {
+        fun onClick(video: Video)
     }
 
     class VideoViewHolder(binding: VideoItemBinding) : ViewHolder(binding.root) {

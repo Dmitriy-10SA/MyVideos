@@ -2,7 +2,6 @@ package com.andef.myvideos.data.network.api
 
 import com.andef.myvideos.data.network.dto.video.VideoDTO
 import com.andef.myvideos.data.network.dto.videolist.VideoItemListHolderDTO
-import com.andef.myvideos.di.annotation.ApplicationScope
 import retrofit2.http.GET
 import retrofit2.http.Query
 
