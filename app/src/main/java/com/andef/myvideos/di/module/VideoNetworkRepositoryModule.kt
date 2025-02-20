@@ -8,5 +8,5 @@ import dagger.Module
 @Module
 interface VideoNetworkRepositoryModule {
     @Binds
-    fun bindVideoRepository(impl: VideoNetworkRepositoryImpl): VideoNetworkRepository
+    fun bindVideoNetworkRepository(impl: VideoNetworkRepositoryImpl): VideoNetworkRepository
 }

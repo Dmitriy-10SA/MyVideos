@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         initSwipeRefreshLayoutVideos()
 
         if (savedInstanceState == null) {
-            viewModel.loadVideosByLastQuery()
+            viewModel.loadInitialVideosFromDatabase()
         }
     }
 
@@ -67,6 +67,14 @@ class MainActivity : AppCompatActivity() {
                     addAll(videos)
                 }
                 videoAdapter.submitList(videosInAdapter)
+            }
+        }
+        viewModel.databaseInitialEmpty.observe(this) {
+            viewModel.loadVideosByLastQuery()
+        }
+        viewModel.videoCountInDatabase.observe(this) { count ->
+            if (count > MAX_DB_ELEM_COUNT) {
+                viewModel.clearVideos()
             }
         }
         viewModel.error.observe(this) {
@@ -110,5 +118,9 @@ class MainActivity : AppCompatActivity() {
             data = Uri.parse(video.videoUrl)
         }
         startActivity(intent)
+    }
+
+    companion object {
+        private const val MAX_DB_ELEM_COUNT = 200
     }
 }

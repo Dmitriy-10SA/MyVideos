@@ -6,7 +6,9 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.andef.myvideos.data.datasource.dao.VideoDao
 import com.andef.myvideos.data.datasource.dbmodel.VideoDbModel
+import com.andef.myvideos.di.annotation.ApplicationScope
 
+@ApplicationScope
 @Database(entities = [VideoDbModel::class], exportSchema = false, version = 1)
 abstract class VideoDatabase : RoomDatabase() {
     abstract val dao: VideoDao
