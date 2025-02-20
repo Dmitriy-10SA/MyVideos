@@ -48,7 +48,7 @@ class MainViewModel @Inject constructor(
     private var nextPageToken: String = ""
     private var lastQuery: String = ""
 
-    private fun loadVideos(isByQuery: Boolean, query: String) {
+    private fun loadVideos(isNeedReplace: Boolean, query: String) {
         viewModelScope.launch(exceptionHandlerVideosId) {
             _isLoading.value = true
             val videos = withContext(Dispatchers.IO) {
@@ -61,7 +61,7 @@ class MainViewModel @Inject constructor(
                     }
                 }.awaitAll()
             }
-            if (isByQuery) {
+            if (isNeedReplace) {
                 _replaceVideos.value = videos.toList()
                 lastQuery = query
             } else {
@@ -69,6 +69,10 @@ class MainViewModel @Inject constructor(
             }
             _isLoading.value = false
         }
+    }
+
+    fun loadVideosBySwipe() {
+        loadVideos(true, lastQuery)
     }
 
     fun loadVideosByLastQuery() {

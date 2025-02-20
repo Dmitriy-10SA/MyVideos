@@ -9,7 +9,16 @@ object DurationParser {
             if (matchResult != null) {
                 val minutes = matchResult.groupValues[1].toInt()
                 val seconds = matchResult.groupValues[2].toInt()
-                append("$minutes:$seconds")
+                if (minutes >= 10) {
+                    append("$minutes:")
+                } else {
+                    append("0$minutes:")
+                }
+                if (seconds >= 10) {
+                    append(seconds)
+                } else {
+                    append("0$seconds")
+                }
             } else {
                 append("неизвестно")
             }

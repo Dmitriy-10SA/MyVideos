@@ -36,6 +36,13 @@ class MainActivity : AppCompatActivity() {
         initAdapterAndRecyclerView()
         initViewModel()
         initStartQueryButton()
+        initSwipeRefreshLayoutVideos()
+    }
+
+    private fun initSwipeRefreshLayoutVideos() {
+        binding.swipeRefreshLayoutVideos.setOnRefreshListener {
+            viewModel.loadVideosBySwipe()
+        }
     }
 
     private fun initStartQueryButton() {
