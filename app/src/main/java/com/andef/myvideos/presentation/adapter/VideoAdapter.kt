@@ -32,7 +32,7 @@ class VideoAdapter : ListAdapter<Video, VideoAdapter.VideoViewHolder>(VideoCallb
             .into(holder.imageViewVideoThumbnail)
         holder.textViewVideoTitle.text = video.title
         holder.textViewVideoDuration.text = DurationParser.parse(video.duration)
-        if (position == itemCount - 10) {
+        if (position == itemCount - 3) {
             onReachEndListener?.onReachEnd()
         }
     }
