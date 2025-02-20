@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyVideos</string>
+    <string name="app_name">Мои видео</string>
     <string name="thumbnail_video">Миниатюра видео</string>
     <string name="search">Поиск</string>
     <string name="search_video">Найти видео</string>
