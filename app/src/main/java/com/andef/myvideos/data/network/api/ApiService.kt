@@ -39,6 +39,6 @@ interface ApiService {
         private const val QUERY_PARAM_LIVE_RELEVANCE_LANGUAGE = "relevanceLanguage"
         private const val QUERY_PARAM_VIDEO_ID = "id"
         private const val QUERY_PARAM_PAGE_TOKEN = "pageToken"
-        private const val API_KEY = "AIzaSyAJn0a55h3vT9VY8QwEVbFtzFu9Jl6vVAc"
+        private const val API_KEY = "AIzaSyCCCtKqQSjlcn42QJwz_3etGWraI8BecsI"
     }
 }
