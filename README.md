@@ -18,6 +18,7 @@
 - Clean Architecture
 - Coroutines
 - Dagger 2
+- Retrofit
 - Room Database
 
 ---
